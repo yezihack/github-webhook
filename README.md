@@ -60,14 +60,14 @@ GLOBAL OPTIONS:
 
 - step 1:: Run your go-webhook server
 
-  notice: port default 6666, http-path: /web-hook
-  注意: 端口默认为6666, 可以更改, http的路由: /web-hook
-  查看自己的外网Ip: `curp ip.sb`
+  - notice: port default 6666, http-path: /web-hook
+  - 注意: 端口默认为6666, 可以更改, http的路由: /web-hook
+  - 查看自己的外网Ip: `curp ip.sb`
 
   ![image-20200422194800401](assets/image-20200422194800401.png)
 
 - step 2: Add webhook
-  添加 webhook 参数
+  - 添加 webhook 参数
   
   ![image-20200422194224139](assets/image-20200422194224139.png)
   ![image-20200422195200683](assets/image-20200422195200683.png)
