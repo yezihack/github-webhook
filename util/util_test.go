@@ -16,10 +16,10 @@ func TestCallScript(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name:"test1",
-			args:args{path:"../test/hook.sh"},
-			want:"ok",
-			wantErr:false,
+			name:    "test1",
+			args:    args{path: "../test/hook.sh"},
+			want:    "ok",
+			wantErr: false,
 		},
 	}
 	for _, tt := range tests {

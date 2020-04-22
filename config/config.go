@@ -11,8 +11,8 @@ var (
 	Version   = "v1.0"
 	Author    = "barry"
 	Email     = "freeit@126.com"
-	Name      = "go-github-webhook"
-	Copyright = "@2020 github.com/yezihack"
+	Name      = "go-webhook"
+	Copyright = "@2020 github.com/yezihack/go-webhook"
 	Usage     = "This is a github web hooks tools"
 )
 

@@ -9,7 +9,7 @@ type PayloadPong struct {
 // repo info
 type GitHubRepo struct {
 	Name        string // repository name
-	FullName        string // repository full name
+	FullName    string // repository full name
 	CloneURL    string // repository url
 	CommitID    string // push commit id
 	CommitName  string // push repo name

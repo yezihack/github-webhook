@@ -16,7 +16,7 @@ func TestLogger_Print(t *testing.T) {
 	}{
 		{
 			name:   "1",
-			fields: fields{quiet:false},
+			fields: fields{quiet: false},
 			args:   args{},
 		},
 	}
