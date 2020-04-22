@@ -19,7 +19,7 @@ func init() {
 		&cli.StringFlag{Name: "bash", Destination: &scriptBash, Aliases: []string{"b"}, Value: "", Usage: "Execute the script path. eg: /home/hook.sh"},
 		&cli.IntFlag{Name: "port", Destination: &port, Aliases: []string{"p"}, Value: 6666, Usage: "http port"},
 		&cli.StringFlag{Name: "secret", Destination: &secret, Aliases: []string{"s"}, Value: "", Usage: "github hook secret"},
-		&cli.BoolFlag{Name: "quiet", Destination: &quiet, Aliases: []string{"q"}, Value: false, Usage: "print any message"},
+		&cli.BoolFlag{Name: "quiet", Destination: &quiet, Aliases: []string{"q"}, Value: false, Usage: "quiet operation"},
 	}
 	// This is processing logic
 	rootCmd.Action = action

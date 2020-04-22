@@ -2,8 +2,10 @@ package config
 
 import (
 	"errors"
-	"fmt"
+	"github.com/howeyc/gopass"
 	"github.com/unknwon/com"
+	"os"
+	"strconv"
 	"strings"
 )
 
@@ -26,27 +28,39 @@ type Config struct {
 func New(scriptBash, secret string, port int, quiet bool) (cfg Config, err error) {
 	cfg = Config{}
 	if scriptBash == "" {
-		err = errors.New("the script path is null")
+		err = errors.New("The script path is null, Use: --bash value")
 		return
 	}
 	// Check that the file is valid
 	if !com.IsFile(scriptBash) {
-		err = fmt.Errorf("the script path not valid")
+		err = errors.New("The script path not valid, path:" + scriptBash)
 		return
 	}
 	cfg.ScriptBash = scriptBash
 	if port != 0 {
 		if port > 65535 {
-			err = errors.New("invalid value for port")
+			err = errors.New("Invalid value for port, port:" + strconv.Itoa(port))
 			return
 		}
 		cfg.Port = port
 	}
 	if strings.TrimSpace(secret) == "" {
-		err = errors.New("the github secret is empty")
-		return
+		var (
+			pass []byte
+		)
+		for {
+			pass, err = gopass.GetPasswdPrompt("Enter secret:", true, os.Stdin, os.Stdout)
+			if err != nil {
+				return
+			}
+			if pass != nil {
+				cfg.Secret = string(pass)
+				break
+			}
+		}
+	} else {
+		cfg.Secret = secret
 	}
-	cfg.Secret = secret
 	cfg.Quiet = quiet
 	return
 }

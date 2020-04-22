@@ -1,13 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"go-webhook/cmd"
-	"log"
+	"os"
 )
 
 // go-webhook main
 func main() {
 	if err := cmd.Execute(); err != nil {
-		log.Fatalln(err)
+		fmt.Println(err)
+		os.Exit(0)
 	}
 }

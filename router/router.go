@@ -20,7 +20,6 @@ var (
 // new api router server
 func New(cfg config.Config) error {
 	conf = cfg
-	log.Print(conf)
 	setMode(conf)
 	engine = gin.Default()
 	addRouter(conf)

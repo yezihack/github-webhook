@@ -15,7 +15,7 @@ func NewLogger(quiet bool) Logger {
 // Print prints its argument if the --quiet flag is not passed
 func (l Logger) Print(args ...interface{}) {
 	if l.quiet == false {
-		fmt.Println(args...)
+		fmt.Print(args...)
 	}
 }
 func (l Logger) Printf(format string, args ...interface{}) {

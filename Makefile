@@ -9,7 +9,7 @@ fmt:
 	gofmt -l -w ./
 
 build:clean fmt
-	go build -o bin/test/${name} .
+	go build -ldflags="-s -w" -o bin/test/${name} .
 
 clean:
 	rm -rf bin/test/*
@@ -22,7 +22,7 @@ linux:fmt
 	set CGO_ENABLED=0
 	set GOARCH=amd64
 	set GOOS=linux
-	go build -o bin/linux/${name} .
+	go build -ldflags="-s -w" -o bin/linux/${name} .
 
 window:fmt
 	set CGO_ENABLED=0
@@ -34,17 +34,19 @@ mac:fmt
 	set CGO_ENABLED=0
 	set GOARCH=amd64
 	set GOOS=darwin
-	go build -o bin/mac/${name} .
+	go build -ldflags="-s -w" -o bin/mac/${name} .
 
 clear:
 	rm -rf bin/window
 	rm -rf bin/linux
 	rm -rf bin/mac
+	rm -rf bin/tar
 
 tar:clear linux window mac clear
-	tar -czf bin/${name}$(VERSION).window-amd64.tar.gz bin/window/${name}.exe
-	tar -czf bin/${name}$(VERSION).linux-amd64.tar.gz bin/linux/${name}
-	tar -czf bin/${name}$(VERSION).darwin-amd64.tar.gz bin/mac/${name}
+	mkdir -p bin/tar 
+	#tar -czf bin/tar/${name}$(VERSION).window-amd64.tar.gz -C bin/window ${name}.exe
+	tar -czf bin/tar/${name}$(VERSION).linux-amd64.tar.gz -C bin/linux ${name}
+	tar -czf bin/tar/${name}$(VERSION).darwin-amd64.tar.gz -C bin/mac ${name}
 
 
 .PHONY:fmt build clean run dev window linux mac clear tar
