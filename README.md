@@ -1,4 +1,4 @@
-# go-github-webhook
+# go-webhook
 
 ## 📡 Overview
 The Go-webhook is a webhook tool on github, 
