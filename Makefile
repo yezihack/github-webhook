@@ -18,7 +18,6 @@ run:build
 	bin/test/${name}
 
 
-
 linux:fmt
 	set CGO_ENABLED=0
 	set GOARCH=amd64
@@ -42,7 +41,7 @@ clear:
 	rm -rf bin/linux
 	rm -rf bin/mac
 
-tar:clear linux window mac
+tar:clear linux window mac clear
 	tar -czf bin/${name}$(VERSION).window-amd64.tar.gz bin/window/${name}.exe
 	tar -czf bin/${name}$(VERSION).linux-amd64.tar.gz bin/linux/${name}
 	tar -czf bin/${name}$(VERSION).darwin-amd64.tar.gz bin/mac/${name}
