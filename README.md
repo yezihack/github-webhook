@@ -8,11 +8,16 @@ That can trigger bash scripts after monitoring git's push behavior
 Golang install:`go get github.com/yezihack/go-webhook`
 Or Download: [Release](https://github.com/yezihack/go-webhook/releases)
 
+```shell script
+cp ~/go-webhook /usr/bin
+chmod u+x /usr/bin/go-webhook
+```
+
 - Default Run: `go-webhook --bash /home/my.sh --secret mysecret`
 - Quiet Mode Run: `go-webhook --bash /home/my.sh --secret mysecret --quiet`
 - Custom Port Mode Run: `go-webhook --bash /home/my.sh --secret mysecret --port 6100 --quiet`
-- Hidden Secret Mode Run: `go-webhook --bash /home/my.sh --quiet`
-
+- Hidden Secret Mode Run: `go-webhook --bash /home/my.sh  --quiet`
+- Daemonize run:  `nohup go-webhook --bash /home/my.sh --secret mysecret --quiet &` 
 
 ## 💌 Features
 - Just run the binaries file 
