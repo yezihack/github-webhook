@@ -1,12 +1,16 @@
 # go-webhook
 
+
+
 ## 📡 Overview
 The Go-webhook is a webhook tool on github, 
 That can trigger bash scripts after monitoring git's push behavior
 
 ## 📜 Usage
-Golang install:`go get github.com/yezihack/go-webhook`
-Or Download: [Release](https://github.com/yezihack/go-webhook/releases)
+### 1. Install
+`go get -u github.com/yezihack/go-webhook`
+### 2. Download
+[Release](https://github.com/yezihack/go-webhook/releases)
 
 ```shell script
 cp ~/go-webhook /usr/bin
