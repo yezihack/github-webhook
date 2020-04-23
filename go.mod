@@ -14,4 +14,4 @@ require (
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )
 
-replace github.com/yezihack/go-webhook => ./go-webhook
+replace github.com/yezihack/go-webhook => github.com/yezihack/go-webhook@v1.0.1
