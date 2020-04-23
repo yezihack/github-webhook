@@ -2,7 +2,7 @@ package router
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
+	"github.com/yezihack/gorestful"
 	"go-webhook/config"
 	"go-webhook/internal"
 	"go-webhook/logger"
@@ -12,40 +12,31 @@ import (
 )
 
 var (
-	conf   config.Config
-	engine *gin.Engine
-	log    logger.Logger
+	log logger.Logger
 )
 
 // new api router server
 func New(cfg config.Config) error {
-	conf = cfg
-	setMode(conf)
-	engine = gin.Default()
-	addRouter(conf)
-	log = logger.NewLogger(conf.Quiet)
-	return engine.Run(fmt.Sprintf(":%d", conf.Port))
-}
-
-// set server mode
-func setMode(cfg config.Config) {
-	if cfg.Quiet == false {
-		gin.SetMode(gin.DebugMode)
-	} else {
-		gin.SetMode(gin.ReleaseMode)
+	if cfg.Quiet {
+		gorestful.SetMode(gorestful.ModeRelease)
 	}
+	log = logger.NewLogger(cfg.Quiet)
+	router := gorestful.New()
+	router.GET("/ping", pong)
+	router.POST("/web-hook", webHookLog(cfg))
+	return http.ListenAndServe(fmt.Sprintf(":%d", cfg.Port), router)
 }
 
-// web http
-func addRouter(cfg config.Config) {
-	engine.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, "PONG")
-	})
-	engine.POST("/web-hook", WebHookLog(cfg))
+func pong(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "GET" {
+		util.Response(w, 405, "Method Not Allowed")
+		return
+	}
+	util.Response(w, 200, "PONG")
 }
 
 // hook
-func WebHookLog(conf config.Config) gin.HandlerFunc {
+func webHookLog(conf config.Config) http.HandlerFunc {
 	return internal.Handler(conf.Secret, log, func(event string, payload *internal.GitHubRepo, req *http.Request) error {
 		// Log webhook
 		log.Println("Received:", event, "for:", payload.Name)

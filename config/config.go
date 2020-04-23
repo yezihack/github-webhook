@@ -3,14 +3,14 @@ package config
 import (
 	"errors"
 	"github.com/howeyc/gopass"
-	"github.com/unknwon/com"
+	"go-webhook/util"
 	"os"
 	"strconv"
 	"strings"
 )
 
 var (
-	Version   = "v1.0"
+	Version   = "v1.0.0"
 	Author    = "barry"
 	Email     = "freeit@126.com"
 	Name      = "go-webhook"
@@ -32,8 +32,8 @@ func New(scriptBash, secret string, port int, quiet bool) (cfg Config, err error
 		return
 	}
 	// Check that the file is valid
-	if !com.IsFile(scriptBash) {
-		err = errors.New("The script path not valid, path:" + scriptBash)
+	if !util.IsFile(scriptBash) {
+		err = errors.New("The script path not valid, script path:" + scriptBash)
 		return
 	}
 	cfg.ScriptBash = scriptBash

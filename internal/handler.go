@@ -1,35 +1,40 @@
 package internal
 
 import (
+	"encoding/json"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"github.com/tidwall/gjson"
 	"go-webhook/logger"
+	"go-webhook/util"
 	"io/ioutil"
 	"net/http"
 	"strings"
 )
 
-type WebHookHandler func(eventname string, payload *GitHubRepo, req *http.Request) error
+type WebHookHandler func(eventName string, payload *GitHubRepo, req *http.Request) error
 
 var log logger.Logger
 
-func Handler(secret string, l logger.Logger, fn WebHookHandler) gin.HandlerFunc {
+func Handler(secret string, l logger.Logger, fn WebHookHandler) http.HandlerFunc {
 	log = l
-	return func(c *gin.Context) {
-		event := c.GetHeader("x-github-event")
-		delivery := c.GetHeader("x-github-delivery")
-		signature := c.GetHeader("x-hub-signature")
-		contentType := c.GetHeader("Content-Type")
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != "POST" {
+			util.Response(w, 405, "Method Not Allowed")
+			return
+		}
+		event := r.Header.Get("x-github-event")
+		delivery := r.Header.Get("x-github-delivery")
+		signature := r.Header.Get("x-hub-signature")
+		contentType := r.Header.Get("Content-Type")
 		log.Printf("x-github-event:%s\nx-github-delivery:%s\nx-hub-signature:%s\nContent-Type:%s\n",
 			event, delivery, signature, contentType)
 		//log.Printf("event:%s, delivery:%s, sign:%s \n", event, delivery, signature)
 		// Utility funcs
 		_fail := func(err error) {
-			fail(c, event, err)
+			fail(w, event, err)
 		}
 		_succeed := func() {
-			succeed(c, event)
+			succeed(w, event)
 		}
 
 		// Ensure headers are all there
@@ -45,7 +50,7 @@ func Handler(secret string, l logger.Logger, fn WebHookHandler) gin.HandlerFunc 
 		}
 
 		// Read body
-		body, err := ioutil.ReadAll(c.Request.Body)
+		body, err := ioutil.ReadAll(r.Body)
 		if err != nil {
 			log.Printf("Read request body:%s\n", string(body))
 			_fail(err)
@@ -86,7 +91,7 @@ func Handler(secret string, l logger.Logger, fn WebHookHandler) gin.HandlerFunc 
 		repo.BranchName = result.Get("ref").Str
 
 		// Do something with payload
-		if err := fn(event, &repo, c.Request); err == nil {
+		if err := fn(event, &repo, r); err == nil {
 			_succeed()
 		} else {
 			_fail(err)
@@ -116,19 +121,29 @@ func validePayloadSignature(secret, signatureHeader string, body []byte) error {
 	return nil
 }
 
-func succeed(c *gin.Context, event string) {
+func succeed(w http.ResponseWriter, event string) {
 	log.Printf("http-code:%d, event:%s\n", 200, event)
-	c.JSON(200, PayloadPong{
+	w.WriteHeader(200)
+	render(w, PayloadPong{
 		Ok:    true,
 		Event: event,
 	})
 }
 
-func fail(c *gin.Context, event string, err error) {
+func fail(w http.ResponseWriter, event string, err error) {
 	log.Printf("http-code:%d, event:%s, err:%s\n", 500, event, err)
-	c.JSON(500, PayloadPong{
+	w.WriteHeader(500)
+	render(w, PayloadPong{
 		Ok:    false,
 		Event: event,
 		Error: err.Error(),
 	})
+}
+func render(w http.ResponseWriter, v interface{}) {
+	data, err := json.Marshal(v)
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	w.Write(data)
 }

@@ -22,7 +22,7 @@ func init() {
 		&cli.BoolFlag{Name: "quiet", Destination: &quiet, Aliases: []string{"q"}, Value: false, Usage: "quiet operation"},
 	}
 	// This is processing logic
-	rootCmd.Action = action
+	rootCmd.Action = actionHandle
 }
 
 // The start app config

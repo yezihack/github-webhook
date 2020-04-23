@@ -18,6 +18,22 @@ run:build
 	bin/test/${name}
 
 
+cover:
+	go test -cover
+
+file:
+	go test -v -covermode=count -coverprofile=${OUT}
+
+func:file
+	go tool cover -func=${OUT}
+
+html:file
+	go tool cover -html=${OUT} -o ${OUT}.html
+
+goveralls:
+	${GOPATH}/bin/goveralls -coverprofile=${OUT} -service=travis-ci -repotoken ${COVERALLS_TOKEN}
+
+
 linux:fmt
 	set CGO_ENABLED=0
 	set GOARCH=amd64

@@ -17,8 +17,14 @@ func TestCallScript(t *testing.T) {
 	}{
 		{
 			name:    "test1",
-			args:    args{path: "../test/hook.sh"},
-			want:    "ok",
+			args:    args{path: "tool.sh"},
+			want:    "",
+			wantErr: true,
+		},
+		{
+			name:    "test1",
+			args:    args{path: "~/.bashrc"},
+			want:    "",
 			wantErr: false,
 		},
 	}

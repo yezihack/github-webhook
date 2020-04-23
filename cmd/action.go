@@ -7,7 +7,7 @@ import (
 )
 
 // action
-var action = func(c *cli.Context) error {
+var actionHandle = func(c *cli.Context) error {
 	if c.NumFlags() == 0 {
 		return nil
 	}
