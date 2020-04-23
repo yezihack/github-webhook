@@ -2,8 +2,8 @@ package cmd
 
 import (
 	"github.com/urfave/cli/v2"
-	"go-webhook/config"
-	"go-webhook/router"
+	"github.com/yezihack/go-webhook/config"
+	"github.com/yezihack/go-webhook/router"
 )
 
 // action

@@ -3,7 +3,7 @@ package config
 import (
 	"errors"
 	"github.com/howeyc/gopass"
-	"go-webhook/util"
+	"github.com/yezihack/go-webhook/util"
 	"os"
 	"strconv"
 	"strings"

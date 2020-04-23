@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"github.com/urfave/cli/v2"
-	"go-webhook/config"
+	"github.com/yezihack/go-webhook/config"
 )
 
 // authors info
