@@ -80,7 +80,7 @@ GLOBAL OPTIONS:
    --version, -v             print the version (default: false)
 
 ```
-# HOW
+# How it works
 
 ![github-webhook](https://upload-images.jianshu.io/upload_images/13827699-49011566250e8250.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 

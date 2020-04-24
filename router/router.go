@@ -7,8 +7,9 @@ import (
 	"github.com/yezihack/github-webhook/logger"
 	"github.com/yezihack/github-webhook/util"
 	"github.com/yezihack/gorestful"
-
 	"net/http"
+	"os"
+	"time"
 )
 
 var (
@@ -24,7 +25,14 @@ func New(cfg config.Config) error {
 	router := gorestful.New()
 	router.GET("/ping", pong)
 	router.POST("/web-hook", webHookLog(cfg))
-	return http.ListenAndServe(fmt.Sprintf(":%d", cfg.Port), router)
+	addr := fmt.Sprintf(":%d", cfg.Port)
+	go func() {
+		log.Printf("%s %d %s\n", time.Now().Format("2006/01/02 15:04:05"), os.Getpid(), addr)
+	}()
+	if err := http.ListenAndServe(addr, router); err != nil {
+		return err
+	}
+	return nil
 }
 
 func pong(w http.ResponseWriter, r *http.Request) {
