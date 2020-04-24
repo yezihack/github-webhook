@@ -1,7 +1,11 @@
 language: go
-go
+go:
   - 1.14
+
 sudo: required
 
+install:
+  - echo "install"
+
 script:
-  - go test -v ./...
+  - echo "script"
