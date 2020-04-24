@@ -26,7 +26,7 @@ func Handler(secret string, l logger.Logger, fn WebHookHandler) http.HandlerFunc
 		delivery := r.Header.Get("x-github-delivery")
 		signature := r.Header.Get("x-hub-signature")
 		contentType := r.Header.Get("Content-Type")
-		log.Printf("x-github-event:%s\nx-github-delivery:%s\nx-hub-signature:%s\nContent-Type:%s\n",
+		log.Verbose("x-github-event:%s\nx-github-delivery:%s\nx-hub-signature:%s\nContent-Type:%s\n",
 			event, delivery, signature, contentType)
 		//log.Printf("event:%s, delivery:%s, sign:%s \n", event, delivery, signature)
 		// Utility funcs
@@ -52,11 +52,11 @@ func Handler(secret string, l logger.Logger, fn WebHookHandler) http.HandlerFunc
 		// Read body
 		body, err := ioutil.ReadAll(r.Body)
 		if err != nil {
-			log.Printf("Read request body:%s\n", string(body))
+			log.Verbose("Read request body:%s\n", string(body))
 			_fail(err)
 			return
 		}
-		log.Printf("RequestBody:%s\n", string(body))
+		log.Verbose("RequestBody:%s\n", string(body))
 		// Validate payload (only when secret is provided)
 		if secret != "" {
 			if err := validePayloadSignature(secret, signature, body); err != nil {
@@ -122,7 +122,7 @@ func validePayloadSignature(secret, signatureHeader string, body []byte) error {
 }
 
 func succeed(w http.ResponseWriter, event string) {
-	log.Printf("http-code:%d, event:%s\n", 200, event)
+	log.Verbose("http-code:%d, event:%s\n", 200, event)
 	w.WriteHeader(200)
 	render(w, PayloadPong{
 		Ok:    true,
@@ -131,7 +131,7 @@ func succeed(w http.ResponseWriter, event string) {
 }
 
 func fail(w http.ResponseWriter, event string, err error) {
-	log.Printf("http-code:%d, event:%s, err:%s\n", 500, event, err)
+	log.Verbose("http-code:%d, event:%s, err:%s\n", 500, event, err)
 	w.WriteHeader(500)
 	render(w, PayloadPong{
 		Ok:    false,

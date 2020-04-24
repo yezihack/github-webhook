@@ -24,9 +24,10 @@ type Config struct {
 	Port       int
 	Secret     string // secret
 	Quiet      bool   // only print info, errors
+	Verbose      bool   // print verbose
 }
 
-func New(scriptBash, secret string, port int, quiet bool) (cfg Config, err error) {
+func New(scriptBash, secret string, port int, quiet, verbose bool) (cfg Config, err error) {
 	cfg = Config{}
 	if scriptBash == "" {
 		err = errors.New("The script path is null, Use: --bash value")
@@ -63,5 +64,6 @@ func New(scriptBash, secret string, port int, quiet bool) (cfg Config, err error
 		cfg.Secret = secret
 	}
 	cfg.Quiet = quiet
+	cfg.Verbose = verbose
 	return
 }

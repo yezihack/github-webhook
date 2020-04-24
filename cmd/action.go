@@ -11,7 +11,7 @@ var actionHandle = func(c *cli.Context) error {
 	if c.NumFlags() == 0 {
 		return nil
 	}
-	cfg, err := config.New(scriptBash, secret, port, quiet)
+	cfg, err := config.New(scriptBash, secret, port, quiet, verbose)
 	if err != nil {
 		return err
 	}
