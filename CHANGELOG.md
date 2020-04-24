@@ -1,5 +1,8 @@
 # CHANGE LOG
 
+## v1.4.2
+- Add pid and port information
+
 ## v1.4.0
 1. release
 

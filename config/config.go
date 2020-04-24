@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	Version     = "v1.4.1"
+	Version     = "v1.4.2"
 	Author      = "barry"
 	Email       = "freeit@126.com"
 	Name        = "github-webhook"
