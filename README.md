@@ -1,5 +1,10 @@
 # github-webhook
+[![](https://img.shields.io/github/release/yezihack/github-webhook?style=flat-square)](https://github.com/yezihack/github-webhook/releases)
+[![](https://img.shields.io/github/license/yezihack/github-webhook?style=flat-square)](https://github.com/yezihack/github-webhook/blob/master/LICENSE)
+![](https://img.shields.io/github/repo-size/yezihack/github-webhook?style=flat-square)
 
+
+https://img.shields.io/appveyor/build/yezihack/github-webhook
 ## 📡 Overview
 The Github-webhook is a webhook tool on github, 
 That can trigger bash scripts after monitoring git's push behavior
@@ -14,7 +19,11 @@ github-webhook 是github webhook自动构建工具.能监听git push行为,自�
 ### 1. Install
 `go get -u github.com/yezihack/github-webhook`
 ### 2. Download
-[Release](https://github.com/yezihack/github-webhook/releases)
+- [releases](https://github.com/yezihack/github-webhook/releases)
+- github release下载太慢, 试试这个
+```
+wget http://img.sgfoot.com/github-webhook1.4.1.linux-amd64.tar.gz
+```
 
 ```shell script
 cp ~/github-webhook /usr/bin
@@ -71,9 +80,9 @@ GLOBAL OPTIONS:
    --version, -v             print the version (default: false)
 
 ```
-# HOW DOING
+# HOW
 
-![](help/ae3edeb82083683a.jpg)
+![github-webhook](https://upload-images.jianshu.io/upload_images/13827699-49011566250e8250.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 - step 1:: Run your github-webhook server
@@ -82,15 +91,16 @@ GLOBAL OPTIONS:
   - 注意: 端口默认为 2020, 可以更改, http的路由: /web-hook
   - 查看自己的外网Ip: `curp ip.sb`
 
-  ![image-20200422194800401](assets/image-20200422194800401.png)
+  ![](assets/image-20200422194800401.png)
 
 - step 2: Add webhook
   - 添加 webhook 参数
   
-  ![image-20200422194224139](assets/image-20200422194224139.png)
-  ![image-20200422195200683](assets/image-20200422195200683.png)
-
-
+    ![配置第一步](https://upload-images.jianshu.io/upload_images/13827699-4aa2488f63658de4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    
+    ![配置第二步](https://upload-images.jianshu.io/upload_images/13827699-f3866693a5db8df2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    
+    ![配置第三步](https://upload-images.jianshu.io/upload_images/13827699-09a4de85b8b2b006.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 👋 Thanks
 - See [GitbookIO](https://github.com/GitbookIO/go-github-webhook)

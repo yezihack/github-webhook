@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 name=github-webhook
-VERSION=1.3.0
+VERSION=1.4.1
 
 dev:run
 
