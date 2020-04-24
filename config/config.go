@@ -3,7 +3,7 @@ package config
 import (
 	"errors"
 	"github.com/howeyc/gopass"
-	"github.com/yezihack/go-webhook/util"
+	"github.com/yezihack/github-webhook/util"
 	"os"
 	"strconv"
 	"strings"
@@ -16,6 +16,7 @@ var (
 	Name      = "github-webhook"
 	Copyright = "@2020 github.com/yezihack/github-webhook"
 	Usage     = "This is a github web hooks tools"
+	DefaultPort = 2020
 )
 
 type Config struct {

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/yezihack/go-webhook/cmd"
+	"github.com/yezihack/github-webhook/cmd"
 	"os"
 )
 

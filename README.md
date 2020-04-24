@@ -1,6 +1,4 @@
-# go-webhook
-
-
+# github-webhook
 
 ## 📡 Overview
 The Github-webhook is a webhook tool on github, 
@@ -29,6 +27,12 @@ chmod u+x /usr/bin/github-webhook
 - Quiet mode run: `go-webhook --bash /home/my.sh --secret mysecret --quiet`
 - Custom port mode run: `go-webhook --bash /home/my.sh --secret mysecret --port 6100 --quiet`
 - Hidden secret mode run: `go-webhook --bash /home/my.sh  --quiet` 
+
+## 4. WebHook
+- Default port: 2020
+- Http path: /web-hook
+- Test URL: `http://ip:2020/ping`
+- WebHook URL: `http://ip:2020/web-hook`
 
 
 ## 💌 Features
