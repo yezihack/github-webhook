@@ -10,11 +10,11 @@ import (
 )
 
 var (
-	Version   = "v1.0.0"
+	Version   = "v1.2.0"
 	Author    = "barry"
 	Email     = "freeit@126.com"
-	Name      = "go-webhook"
-	Copyright = "@2020 github.com/yezihack/go-webhook"
+	Name      = "github-webhook"
+	Copyright = "@2020 github.com/yezihack/github-webhook"
 	Usage     = "This is a github web hooks tools"
 )
 

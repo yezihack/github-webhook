@@ -2,11 +2,11 @@ package router
 
 import (
 	"fmt"
-	"github.com/yezihack/gorestful"
 	"github.com/yezihack/go-webhook/config"
 	"github.com/yezihack/go-webhook/internal"
 	"github.com/yezihack/go-webhook/logger"
 	"github.com/yezihack/go-webhook/util"
+	"github.com/yezihack/gorestful"
 
 	"net/http"
 )

@@ -3,25 +3,33 @@
 
 
 ## 📡 Overview
-The Go-webhook is a webhook tool on github, 
+The Github-webhook is a webhook tool on github, 
 That can trigger bash scripts after monitoring git's push behavior
+
+The a line command handles the automatic build
+
+github-webhook 是github webhook自动构建工具.能监听git push行为,自动触发脚本.
+
+一条命令搞定webhook自动构建,无需复杂的配置.
 
 ## 📜 Usage
 ### 1. Install
-`go get -u github.com/yezihack/go-webhook`
+`go get -u github.com/yezihack/github-webhook`
 ### 2. Download
-[Release](https://github.com/yezihack/go-webhook/releases)
+[Release](https://github.com/yezihack/github-webhook/releases)
 
 ```shell script
-cp ~/go-webhook /usr/bin
-chmod u+x /usr/bin/go-webhook
+cp ~/github-webhook /usr/bin
+chmod u+x /usr/bin/github-webhook
 ```
 
-- Default Run: `go-webhook --bash /home/my.sh --secret mysecret`
-- Quiet Mode Run: `go-webhook --bash /home/my.sh --secret mysecret --quiet`
-- Custom Port Mode Run: `go-webhook --bash /home/my.sh --secret mysecret --port 6100 --quiet`
-- Hidden Secret Mode Run: `go-webhook --bash /home/my.sh  --quiet`
-- Daemonize run:  `nohup go-webhook --bash /home/my.sh --secret mysecret --quiet &` 
+## 3. Command
+- Daemonize run:  `nohup go-webhook --bash /home/my.sh --secret mysecret -q &`  后台运行
+- Monitor run: `go-webhook --bash /home/my.sh --secret mysecret`
+- Quiet mode run: `go-webhook --bash /home/my.sh --secret mysecret --quiet`
+- Custom port mode run: `go-webhook --bash /home/my.sh --secret mysecret --port 6100 --quiet`
+- Hidden secret mode run: `go-webhook --bash /home/my.sh  --quiet` 
+
 
 ## 💌 Features
 - Just run the binaries file 
@@ -62,7 +70,7 @@ GLOBAL OPTIONS:
 ![](help/ae3edeb82083683a.jpg)
 
 
-- step 1:: Run your go-webhook server
+- step 1:: Run your github-webhook server
 
   - notice: port default 6666, http-path: /web-hook
   - 注意: 端口默认为6666, 可以更改, http的路由: /web-hook
@@ -79,5 +87,4 @@ GLOBAL OPTIONS:
 
 
 ## 👋 Thanks
-
 - See [GitbookIO](https://github.com/GitbookIO/go-github-webhook)

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-name=go-webhook
-VERSION=1.0
+name=github-webhook
+VERSION=1.2.0
 
 dev:run
 
