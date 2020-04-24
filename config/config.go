@@ -10,12 +10,12 @@ import (
 )
 
 var (
-	Version   = "v1.2.0"
-	Author    = "barry"
-	Email     = "freeit@126.com"
-	Name      = "github-webhook"
-	Copyright = "@2020 github.com/yezihack/github-webhook"
-	Usage     = "This is a github web hooks tools"
+	Version     = "v1.2.1"
+	Author      = "barry"
+	Email       = "freeit@126.com"
+	Name        = "github-webhook"
+	Copyright   = "@2020 github.com/yezihack/github-webhook"
+	Usage       = "This is a github web hooks tools"
 	DefaultPort = 2020
 )
 
