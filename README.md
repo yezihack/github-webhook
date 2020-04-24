@@ -52,9 +52,10 @@ chmod u+x /usr/bin/github-webhook
 ```text
 GLOBAL OPTIONS:
    --bash value, -b value    Execute the script path. eg: /home/hook.sh
-   --port value, -p value    http port (default: 6666)
+   --port value, -p value    http port (default: 2020)
    --secret value, -s value  github hook secret
    --quiet, -q               quiet operation (default: false)
+   --verbose, --vv           print verbose (default: false)
    --help, -h                show help (default: false)
    --version, -v             print the version (default: false)
 ```
@@ -62,8 +63,9 @@ GLOBAL OPTIONS:
 ```text
 GLOBAL OPTIONS:
    --bash value, -b value    Execute the script path. eg: /home/hook.sh 自定义脚本
-   --port value, -p value    http port (default: 6666) 自定义端口,默认6666
+   --port value, -p value    http port (default: 2020) 自定义端口,默认6666
    --secret value, -s value  github hook secret 自定义密码, 不允许为空
+   --verbose, --vv           print verbose (default: false) 打印更多详细信息
    --quiet, -q               quiet operation (default: false) 安静模式,默认关闭. -q 开启,不输出任何信息
    --help, -h                show help (default: false) 
    --version, -v             print the version (default: false)
@@ -76,8 +78,8 @@ GLOBAL OPTIONS:
 
 - step 1:: Run your github-webhook server
 
-  - notice: port default 6666, http-path: /web-hook
-  - 注意: 端口默认为6666, 可以更改, http的路由: /web-hook
+  - notice: port default 2020, http-path: /web-hook
+  - 注意: 端口默认为 2020, 可以更改, http的路由: /web-hook
   - 查看自己的外网Ip: `curp ip.sb`
 
   ![image-20200422194800401](assets/image-20200422194800401.png)

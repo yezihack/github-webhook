@@ -4,15 +4,15 @@ import "fmt"
 
 // Logger struct
 type Logger struct {
-	quiet bool
+	quiet   bool
 	verbose bool
 }
 
 // New logger
 func NewLogger(quiet, verbose bool) Logger {
 	return Logger{
-		quiet: quiet,
-		verbose:verbose,
+		quiet:   quiet,
+		verbose: verbose,
 	}
 }
 
@@ -22,6 +22,7 @@ func (l Logger) Print(args ...interface{}) {
 		fmt.Print(args...)
 	}
 }
+
 // Print prints its argument if the --quiet flag is not passed
 func (l Logger) Println(args ...interface{}) {
 	if l.quiet == false {

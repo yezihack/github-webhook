@@ -24,7 +24,7 @@ type Config struct {
 	Port       int
 	Secret     string // secret
 	Quiet      bool   // only print info, errors
-	Verbose      bool   // print verbose
+	Verbose    bool   // print verbose
 }
 
 func New(scriptBash, secret string, port int, quiet, verbose bool) (cfg Config, err error) {
