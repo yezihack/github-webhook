@@ -2,10 +2,15 @@ language: go
 go:
   - 1.14
 
-sudo: required
+sudo: false
+
+os:
+  - linux
+  - osx
 
 install:
   - echo "install"
 
 script:
   - echo "script"
+  - go test -v ./...

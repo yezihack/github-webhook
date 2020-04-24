@@ -1,4 +1,5 @@
 # github-webhook
+[![Build Status](https://travis-ci.org/yezihack/github-webhook.svg?branch=master)](https://travis-ci.org/yezihack/github-webhook)
 [![](https://img.shields.io/github/release/yezihack/github-webhook?style=flat-square)](https://github.com/yezihack/github-webhook/releases)
 [![](https://img.shields.io/github/license/yezihack/github-webhook?style=flat-square)](https://github.com/yezihack/github-webhook/blob/master/LICENSE)
 ![](https://img.shields.io/github/repo-size/yezihack/github-webhook?style=flat-square)
