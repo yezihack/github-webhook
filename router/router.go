@@ -39,10 +39,10 @@ func pong(w http.ResponseWriter, r *http.Request) {
 func webHookLog(conf config.Config) http.HandlerFunc {
 	return internal.Handler(conf.Secret, log, func(event string, payload *internal.GitHubRepo, req *http.Request) error {
 		// Log webhook
-		log.Println("Received:", event, " for:", payload.Name)
+		log.Println("Event:", event, ",for:", payload.Name)
 		// You'll probably want to do some real processing
 		log.Println("Can clone repo at:", payload.CloneURL)
-		log.Printf("Commit INFO Name:%s\n, Email:%s\n, Branch:%s\n, CommitID:%s\n, At:%s\n",
+		log.Printf("Commit information:\nName:%s\nEmail:%s\nBranch:%s\nCommitID:%s\nTime:%s\n",
 			payload.CommitName, payload.CommitEmail, payload.BranchName, payload.CommitID, payload.CommitAt)
 
 		// All is good (return an error to fail)

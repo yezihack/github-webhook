@@ -1,5 +1,8 @@
 # CHANGE LOG
 
+## v1.4.0
+1. release
+
 ## v1.3.0
 1. add verbose 
 
