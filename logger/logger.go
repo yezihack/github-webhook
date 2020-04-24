@@ -36,8 +36,8 @@ func (l Logger) Printf(format string, args ...interface{}) {
 	}
 }
 
-func (l Logger) Verbose(args ...interface{}) {
+func (l Logger) Verbose(format string, args ...interface{}) {
 	if l.verbose == true {
-		l.Println(args...)
+		l.Printf(format, args...)
 	}
 }
