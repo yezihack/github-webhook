@@ -49,7 +49,7 @@ After=network.target
  
 [Service]
 Type=simple
-ExecStart=/home/gopath/bin/github-webhook --bash /home/sh/hugo2www.sh --secret qweqwe
+ExecStart=/usr/bin/github-webhook --bash /home/sh/hugo2www.sh --secret qweqwe
 Restart=on-failure
 RestartSec=42s
  
