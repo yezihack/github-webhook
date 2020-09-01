@@ -32,11 +32,37 @@ chmod u+x /usr/bin/github-webhook
 ```
 
 ## 3. Command
-- Daemonize run:  `nohup go-webhook --bash /home/my.sh --secret mysecret -q &`  后台运行
-- Monitor run: `go-webhook --bash /home/my.sh --secret mysecret`
-- Quiet mode run: `go-webhook --bash /home/my.sh --secret mysecret --quiet`
-- Custom port mode run: `go-webhook --bash /home/my.sh --secret mysecret --port 6100 --quiet`
-- Hidden secret mode run: `go-webhook --bash /home/my.sh  --quiet` 
+- Daemonize run:  `nohup github-webhook --bash /home/my.sh --secret mysecret -q &`  后台运行
+- Monitor run: `github-webhook --bash /home/my.sh --secret mysecret`
+- Quiet mode run: `github-webhook --bash /home/my.sh --secret mysecret --quiet`
+- Custom port mode run: `github-webhook --bash /home/my.sh --secret mysecret --port 6100 --quiet`
+- Hidden secret mode run: `github-webhook --bash /home/my.sh  --quiet` 
+
+add systemd service
+> /home/sh/hugo2www.sh is your script bash file
+```shell script
+cat > /lib/systemd/system/webhook << EOF
+[Unit]
+Description=github-webhook
+Documentation=https://github.com/yezihack/github-webhook
+After=network.target
+ 
+[Service]
+Type=simple
+ExecStart=/home/gopath/bin/github-webhook --bash /home/sh/hugo2www.sh --secret qweqwe
+Restart=on-failure
+RestartSec=42s
+ 
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+```shell script
+systemctl daemon-reload
+systemctl start webhook
+systemctl status webhook
+```
+
 
 ## 4. WebHook
 - Default port: 2020
