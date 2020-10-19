@@ -52,7 +52,7 @@ func webHookLog(conf config.Config) http.HandlerFunc {
 		log.Println("Can clone repo at:", payload.CloneURL)
 		log.Printf("Commit information:\nName:%s\nEmail:%s\nBranch:%s\nCommitID:%s\nTime:%s\n",
 			payload.CommitName, payload.CommitEmail, payload.BranchName, payload.CommitID, payload.CommitAt)
-
+		log.Printf("script filename:%s\n", conf.ScriptBash)
 		// All is good (return an error to fail)
 		str, err := util.CallScript(conf.ScriptBash)
 		if err != nil {

@@ -129,5 +129,13 @@ GLOBAL OPTIONS:
     
     ![配置第三步](https://upload-images.jianshu.io/upload_images/13827699-09a4de85b8b2b006.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+- step 3: run shell script
+ - notice: Make sure that the last line write: exit 0
+ - shell脚本的最后一行一定要写上 `exit 0` 代码
+```
+#!/bin/bash
+echo "hello webhook"
+exit 0
+```
 ## 👋 Thanks
 - See [GitbookIO](https://github.com/GitbookIO/go-github-webhook)
