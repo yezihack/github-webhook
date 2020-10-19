@@ -1,15 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"github.com/yezihack/github-webhook/cmd"
-	"os"
+	"log"
 )
 
 // go-webhook main
 func main() {
-	if err := cmd.Execute(); err != nil {
-		fmt.Println(err)
-		os.Exit(0)
-	}
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
+	cmd.Execute()
 }

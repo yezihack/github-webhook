@@ -3,6 +3,7 @@ package cmd
 import (
 	"github.com/urfave/cli/v2"
 	"github.com/yezihack/github-webhook/config"
+	"log"
 	"os"
 )
 
@@ -37,6 +38,9 @@ var rootCmd = cli.App{
 }
 
 // Start execute
-func Execute() error {
-	return rootCmd.Run(os.Args)
+func Execute() {
+	err := rootCmd.Run(os.Args)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
