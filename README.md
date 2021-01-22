@@ -5,7 +5,6 @@
 ![](https://img.shields.io/github/repo-size/yezihack/github-webhook?style=flat-square)
 
 
-https://img.shields.io/appveyor/build/yezihack/github-webhook
 ## 📡 Overview
 The Github-webhook is a webhook tool on github, 
 That can trigger bash scripts after monitoring git's push behavior
