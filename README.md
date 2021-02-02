@@ -7,24 +7,20 @@
 
 https://img.shields.io/appveyor/build/yezihack/github-webhook
 ## 📡 Overview
-The Github-webhook is a webhook tool on github, 
-That can trigger bash scripts after monitoring git's push behavior
+- The Github-webhook is a webhook tool on github, 
+- That can trigger bash scripts after monitoring git's push behavior
+- The a line command handles the automatic build
+- Built-in queue for tasks, quick response to GitHub Webhook, 100% response 200 guaranteed
 
-The a line command handles the automatic build
-
-github-webhook 是github webhook自动构建工具.能监听git push行为,自动触发脚本.
-
-一条命令搞定webhook自动构建,无需复杂的配置.
+1. github-webhook 是github webhook自动构建工具.能监听git push行为,自动触发脚本.
+1. 一条命令搞定webhook自动构建,无需复杂的配置.
+1. 内置队列执行任务，迅速响应 github webhook, 保证100% response 200
 
 ## 📜 Usage
 ### 1. Install
 `go get -u github.com/yezihack/github-webhook`
 ### 2. Download
 - [releases](https://github.com/yezihack/github-webhook/releases)
-- github release下载太慢, 试试这个
-```
-wget http://img.sgfoot.com/github-webhook1.4.1.linux-amd64.tar.gz
-```
 
 ```shell script
 cp ~/github-webhook /usr/bin
