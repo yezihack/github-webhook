@@ -3,12 +3,13 @@ package internal
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/tidwall/gjson"
-	"github.com/yezihack/github-webhook/logger"
-	"github.com/yezihack/github-webhook/util"
 	"io/ioutil"
 	"net/http"
 	"strings"
+
+	"github.com/tidwall/gjson"
+	"github.com/yezihack/github-webhook/logger"
+	"github.com/yezihack/github-webhook/util"
 )
 
 type WebHookHandler func(eventName string, payload *GitHubRepo, req *http.Request) error
@@ -56,6 +57,7 @@ func Handler(secret string, l logger.Logger, fn WebHookHandler) http.HandlerFunc
 			_fail(err)
 			return
 		}
+		fmt.Println("body", string(body))
 		log.Verbose("RequestBody:%s\n", string(body))
 		// Validate payload (only when secret is provided)
 		if secret != "" {
@@ -65,20 +67,6 @@ func Handler(secret string, l logger.Logger, fn WebHookHandler) http.HandlerFunc
 				return
 			}
 		}
-		// Get payload. from github data is encode. fix by 2020.04.20
-		//var payloadData []byte
-		//if contentType == "application/x-www-form-urlencoded" {
-		//	payloadSplit := strings.SplitN(string(body), "=", 2)
-		//	payloadUrlDecode, err := url.QueryUnescape(payloadSplit[1])
-		//	if err != nil {
-		//		log.Printf("RequestBody:%s\n", string(body))
-		//		_fail(err)
-		//		return
-		//	}
-		//	payloadData = []byte(payloadUrlDecode)
-		//} else if contentType == "application/json" {
-		//	payloadData = body
-		//}
 		repo := GitHubRepo{}
 		result := gjson.ParseBytes(body)
 		repo.Name = result.Get("repository.name").Str

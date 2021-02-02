@@ -2,15 +2,16 @@ package config
 
 import (
 	"errors"
-	"github.com/howeyc/gopass"
-	"github.com/yezihack/github-webhook/util"
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/howeyc/gopass"
+	"github.com/yezihack/github-webhook/util"
 )
 
 var (
-	Version     = "v1.4.3"
+	Version     = "v1.5.0"
 	Author      = "barry"
 	Email       = "freeit@126.com"
 	Name        = "github-webhook"
