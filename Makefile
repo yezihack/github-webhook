@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 name=github-webhook
-VERSION=1.4.1
+VERSION=1.5.0
 
 dev:run
 
@@ -35,22 +35,13 @@ goveralls:
 
 
 linux:fmt
-	set CGO_ENABLED=0
-	set GOARCH=amd64
-	set GOOS=linux
-	go build -ldflags="-s -w" -o bin/linux/${name} .
+	CGO_ENABLED=0 GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o bin/linux/${name} .
 
 window:fmt
-	set CGO_ENABLED=0
-	set GOARCH=amd64
-	set GOOS=windows
-	go build -o bin/window/${name}.exe .
+	CGO_ENABLED=0 GOARCH=amd64 GOOS=windows go build -ldflags="-s -w" -o bin/window/${name}.exe .
 
 mac:fmt
-	set CGO_ENABLED=0
-	set GOARCH=amd64
-	set GOOS=darwin
-	go build -ldflags="-s -w" -o bin/mac/${name} .
+	CGO_ENABLED=0 GOARCH=amd64 GOOS=darwin go build -ldflags="-s -w" -o bin/mac/${name} .
 
 clear:
 	rm -rf bin/window
@@ -60,7 +51,7 @@ clear:
 
 tar:clear linux window mac clear
 	mkdir -p bin/tar 
-	#tar -czf bin/tar/${name}$(VERSION).window-amd64.tar.gz -C bin/window ${name}.exe
+	tar -czf bin/tar/${name}$(VERSION).window-amd64.tar.gz -C bin/window ${name}.exe
 	tar -czf bin/tar/${name}$(VERSION).linux-amd64.tar.gz -C bin/linux ${name}
 	tar -czf bin/tar/${name}$(VERSION).darwin-amd64.tar.gz -C bin/mac ${name}
 
