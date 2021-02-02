@@ -16,14 +16,19 @@
 1. 内置队列执行任务，迅速响应 github webhook, 保证100% response 200
 
 ## 📜 Usage
-### 1. Install
-`go get -u github.com/yezihack/github-webhook`
-### 2. Download
+### 1. Download && Install
 - [releases](https://github.com/yezihack/github-webhook/releases)
-
 ```shell script
-cp ~/github-webhook /usr/bin
-chmod u+x /usr/bin/github-webhook
+cd ~
+wget https://github.com/yezihack/github-webhook/releases/download/v1.5.0/github-webhook1.5.0.linux-amd64.tar.gz
+tar -zxvf github-webhook1.5.0.linux-amd64.tar.gz
+cp ~/github-webhook /usr/local/sbin
+chmod u+x /usr/local/sbin/github-webhook
+```
+
+run script
+```
+/usr/bin/github-webhook --bash /home/sh/test.sh 
 ```
 
 ## 3. Command

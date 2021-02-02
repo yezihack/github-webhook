@@ -51,9 +51,9 @@ clear:
 
 tar:clear linux window mac clear
 	mkdir -p bin/tar 
-	tar -czf bin/tar/${name}$(VERSION).window-amd64.tar.gz -C bin/window ${name}.exe
-	tar -czf bin/tar/${name}$(VERSION).linux-amd64.tar.gz -C bin/linux ${name}
-	tar -czf bin/tar/${name}$(VERSION).darwin-amd64.tar.gz -C bin/mac ${name}
+	tar -czvf bin/tar/${name}$(VERSION).window-amd64.tar.gz -C bin/window ${name}.exe
+	tar -czvf bin/tar/${name}$(VERSION).linux-amd64.tar.gz -C bin/linux ${name}
+	tar -czvf bin/tar/${name}$(VERSION).darwin-amd64.tar.gz -C bin/mac ${name}
 
 
 .PHONY:fmt build clean run dev window linux mac clear tar
