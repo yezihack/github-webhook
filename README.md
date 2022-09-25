@@ -80,7 +80,7 @@ After=network.target
  
 [Service]
 Type=simple
-ExecStart=/usr/bin/github-webhook --bash /opt/sh/test.sh --secret mpjjCBWebn8qw3mM
+ExecStart=/usr/sbin/github-webhook --bash /opt/sh/test.sh --secret mpjjCBWebn8qw3mM
 Restart=always
 RestartSec=3s
  
