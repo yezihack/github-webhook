@@ -72,7 +72,7 @@ EOF
 > `/opt/sh/test.sh` is your script bash file
 
 ```shell script
-cat > /lib/systemd/system/github-webhook.service << EOF
+cat > /usr/lib/systemd/system/webhook.service << EOF
 [Unit]
 Description=github-webhook
 Documentation=https://github.com/yezihack/github-webhook
